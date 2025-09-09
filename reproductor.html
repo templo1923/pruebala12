@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Reproductor IPTV por ID</title>
+    <title>Reproductor IPTV</title>
     <script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
     <style>
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000; }
@@ -14,7 +14,6 @@
     <div id="loading">Cargando...</div>
 
     <script>
-        // Cambiamos 'nombre' por 'id'
         const urlParams = new URLSearchParams(window.location.search);
         const channelId = urlParams.get('id'); 
 
@@ -22,8 +21,11 @@
         const loadingElement = document.getElementById('loading');
         
         if (channelId) {
-            // La URL de tu API en Vercel
-            const apiUrl = `https://prueba12.vercel.app/canal?id=${channelId}`;
+            // ==========================================================
+            //       LA LÍNEA MÁS IMPORTANTE DE TODO EL PROYECTO
+            // Debe ser la URL completa de tu OTRO proyecto (el servidor)
+            // ==========================================================
+            const apiUrl = `https://eventoshd.vercel.app/canal?id=${channelId}`;
 
             fetch(apiUrl)
                 .then(response => response.json())
