@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Reproductor IPTV</title>
+    <title>Reproductor Stream</title>
     <script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/clappr-hlsjs-plugin@latest/dist/hlsjs-playback.min.js"></script>
     <style>
@@ -16,14 +16,16 @@
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const channelId = urlParams.get('id'); 
+        // ----- LÍNEA CAMBIADA -----
+        const streamName = urlParams.get('stream'); 
 
         const playerElement = document.getElementById('player');
         const loadingElement = document.getElementById('loading');
         
-        if (channelId) {
+        if (streamName) {
             // La URL completa de tu servidor API
-            const apiUrl = `https://eventoshd.vercel.app/canal?id=${channelId}`;
+            // ----- LÍNEA CAMBIADA -----
+            const apiUrl = `https://eventoshd.vercel.app/canal?stream=${streamName}`;
 
             fetch(apiUrl)
                 .then(response => response.json())
@@ -47,7 +49,7 @@
                     loadingElement.innerText = `Error de conexión con el servidor API.`;
                 });
         } else {
-            loadingElement.innerText = 'Por favor, especifica un ID de canal en la URL (ej: ?id=741816)';
+            loadingElement.innerText = 'Por favor, especifica un stream en la URL (ej: ?stream=disney3)';
         }
     </script>
 </body>
