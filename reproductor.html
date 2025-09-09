@@ -3,6 +3,7 @@
 <head>
     <title>Reproductor IPTV</title>
     <script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/clappr-hlsjs-plugin@latest/dist/hlsjs-playback.min.js"></script>
     <style>
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000; }
         #player { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
@@ -21,10 +22,7 @@
         const loadingElement = document.getElementById('loading');
         
         if (channelId) {
-            // ==========================================================
-            //       LA LÍNEA MÁS IMPORTANTE DE TODO EL PROYECTO
-            // Debe ser la URL completa de tu OTRO proyecto (el servidor)
-            // ==========================================================
+            // La URL completa de tu servidor API
             const apiUrl = `https://eventoshd.vercel.app/canal?id=${channelId}`;
 
             fetch(apiUrl)
